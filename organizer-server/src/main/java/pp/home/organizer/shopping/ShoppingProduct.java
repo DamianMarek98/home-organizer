@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Table(name = "shopping_product")
 @Entity
-public class ShoppingProduct {
+class ShoppingProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shopping_product_gen")
     @SequenceGenerator(name = "shopping_product_gen", sequenceName = "shopping_product_seq")
