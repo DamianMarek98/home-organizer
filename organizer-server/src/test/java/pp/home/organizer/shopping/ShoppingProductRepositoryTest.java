@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
 @SpringBootTest
-public class ShoppingProductRepositoryTest {
+class ShoppingProductRepositoryTest {
 
     @Autowired
     private ShoppingProductRepository shoppingProductRepository;
@@ -17,7 +17,6 @@ public class ShoppingProductRepositoryTest {
     @Test
     void test() {
         final var a = shoppingProductRepository.findAll();
-        assertThat(a).isNotEmpty();
-        assertThat(a.size()).isEqualTo(2);
+        assertThat(a).isNotEmpty().hasSize(2);
     }
 }
