@@ -1,15 +1,16 @@
 package pp.home.organizer.shopping;
 
+
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
+import java.util.List;
 
-@Getter
-@Setter
-@Table(name = "shopping_product")
 @Entity
-class ShoppingProduct {
+@Getter(value = AccessLevel.PACKAGE)
+class ShoppingList extends AbstractAggregateRoot<ShoppingList> {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shopping_product_gen")
     @SequenceGenerator(name = "shopping_product_gen", sequenceName = "shopping_product_seq")
@@ -18,6 +19,7 @@ class ShoppingProduct {
     @Column
     private String name;
 
-    @Column
-    private Long listId;
+    @OneToMany
+    @JoinColumn(name = "list_id")
+    private List<ShoppingProduct> products;
 }

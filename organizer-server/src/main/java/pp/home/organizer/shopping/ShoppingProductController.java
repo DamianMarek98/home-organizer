@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 class ShoppingProductController {
-    private final ShoppingProductRepository shoppingProductRepository;
+    private final ShoppingListRepository shoppingListRepository;
 
-    public ShoppingProductController(ShoppingProductRepository shoppingProductRepository) {
-        this.shoppingProductRepository = shoppingProductRepository;
+    public ShoppingProductController(ShoppingListRepository shoppingListRepository) {
+        this.shoppingListRepository = shoppingListRepository;
     }
 
     @GetMapping("/products")
     public Iterable<ShoppingProductDto> getProducts() {
-        return shoppingProductRepository.findAll()
+        return shoppingListRepository.findAll()
                 .stream()
                 .map(ShoppingProductDto::from)
                 .toList();
